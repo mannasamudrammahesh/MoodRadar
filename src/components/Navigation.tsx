@@ -30,7 +30,7 @@ const Navigation = () => {
               </div>
               <div className="hidden sm:block">
                 <span className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                  Slack Sentinel
+                  MoodRadar
                 </span>
               </div>
             </Link>

@@ -60,10 +60,8 @@ const Home = () => {
               </Badge>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
                 <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                  Slack Sentiment
+                  MoodRadar
                 </span>
-                <br />
-                Watchdog
               </h1>
               <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
                 Keep your finger on the pulse of customer support with real-time sentiment analysis. 
@@ -160,7 +158,7 @@ const Home = () => {
             Ready to improve your support sentiment?
           </h2>
           <p className="text-xl text-white/90 mb-8">
-            Join teams already using Slack Sentiment Watchdog to monitor and improve customer satisfaction.
+            Join teams already using MoodRadar to monitor and improve customer satisfaction.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" variant="secondary" className="text-lg px-8" asChild>

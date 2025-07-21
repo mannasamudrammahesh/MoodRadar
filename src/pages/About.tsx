@@ -78,7 +78,7 @@ const About = () => {
           </Badge>
           <h1 className="text-4xl sm:text-5xl font-bold mb-6">
             How <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Slack Sentiment Watchdog
+              MoodRadar
             </span> Works
           </h1>
           <p className="text-xl text-muted-foreground leading-relaxed">
@@ -260,7 +260,7 @@ const About = () => {
             Ready to Start Monitoring?
           </h2>
           <p className="text-xl text-white/90 mb-8">
-            Set up your Slack Sentiment Watchdog in minutes and start improving customer satisfaction today.
+            Set up your MoodRadar in minutes and start improving customer satisfaction today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" variant="secondary" className="text-lg px-8" asChild>
