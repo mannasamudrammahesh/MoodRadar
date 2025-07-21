@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useToast } from "@/hooks/use-toast";
 import { 
   BarChart3, 
   TrendingUp, 
@@ -18,6 +20,28 @@ import {
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from "recharts";
 
 const Dashboard = () => {
+  const [selectedChannel, setSelectedChannel] = useState("all-channels");
+  const [isRefreshing, setIsRefreshing] = useState(false);
+  const { toast } = useToast();
+
+  const handleRefresh = () => {
+    setIsRefreshing(true);
+    setTimeout(() => {
+      setIsRefreshing(false);
+      toast({
+        title: "Dashboard refreshed",
+        description: "Latest sentiment data has been loaded.",
+      });
+    }, 1500);
+  };
+
+  const handleExport = () => {
+    toast({
+      title: "Export started",
+      description: "Your sentiment report is being generated.",
+    });
+  };
+
   // Mock data for sentiment analysis
   const sentimentData = [
     { time: "09:00", positive: 85, neutral: 60, negative: 15 },
@@ -123,11 +147,11 @@ const Dashboard = () => {
                 <SelectItem value="general-help">#general-help</SelectItem>
               </SelectContent>
             </Select>
-            <Button variant="outline" size="sm">
-              <RefreshCw className="h-4 w-4 mr-2" />
+            <Button variant="outline" size="sm" onClick={handleRefresh} disabled={isRefreshing}>
+              <RefreshCw className={`h-4 w-4 mr-2 ${isRefreshing ? 'animate-spin' : ''}`} />
               Refresh
             </Button>
-            <Button variant="outline" size="sm">
+            <Button variant="outline" size="sm" onClick={handleExport}>
               <Download className="h-4 w-4 mr-2" />
               Export
             </Button>

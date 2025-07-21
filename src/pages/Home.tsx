@@ -42,7 +42,7 @@ const Home = () => {
   const stats = [
     { value: "99.9%", label: "Uptime" },
     { value: "< 200ms", label: "Response Time" },
-    { value: "50K+", label: "Messages Analyzed" },
+    { value: "33", label: "Messages Analyzed" },
     { value: "24/7", label: "Monitoring" }
   ];
 
@@ -167,7 +167,7 @@ const Home = () => {
                 Add to Slack
               </Link>
             </Button>
-            <Button size="lg" variant="outline" className="text-lg px-8 border-white/20 text-white hover:bg-white/10" asChild>
+            <Button size="lg" variant="secondary" className="text-lg px-8" asChild>
               <Link to="/about">
                 Learn More
               </Link>

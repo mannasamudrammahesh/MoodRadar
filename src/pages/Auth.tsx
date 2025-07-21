@@ -39,7 +39,7 @@ const Auth = () => {
               <Bot className="h-7 w-7 text-white" />
             </div>
           </div>
-          <h1 className="text-2xl font-bold">Welcome to Slack Sentinel</h1>
+          <h1 className="text-2xl font-bold">Welcome to MoodRadar</h1>
           <p className="text-muted-foreground">
             Sign in to start monitoring sentiment in your Slack channels
           </p>

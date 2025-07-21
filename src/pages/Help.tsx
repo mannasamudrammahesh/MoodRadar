@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -5,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { useToast } from "@/hooks/use-toast";
 import { 
   HelpCircle, 
   MessageSquare, 
@@ -21,6 +23,21 @@ import {
 import { Link } from "react-router-dom";
 
 const Help = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
+
+  const handleContactSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setTimeout(() => {
+      setIsSubmitting(false);
+      toast({
+        title: "Message sent",
+        description: "We've received your message and will respond within 24 hours.",
+      });
+    }, 1500);
+  };
+
   const faqs = [
     {
       question: "How do I connect my Slack workspace?",
@@ -95,7 +112,7 @@ const Help = () => {
           </div>
           <h1 className="text-4xl font-bold">Help & Support</h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Get help with setup, troubleshooting, and making the most of your Slack Sentiment Watchdog
+            Get help with setup, troubleshooting, and making the most of your MoodRadar
           </p>
         </div>
 
@@ -172,22 +189,25 @@ const Help = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor="subject">Subject</Label>
-                  <Input id="subject" placeholder="Describe your issue briefly" />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="message">Message</Label>
-                  <Textarea
-                    id="message"
-                    placeholder="Please provide details about your question or issue..."
-                    className="min-h-[100px]"
-                  />
-                </div>
-                <Button className="w-full bg-gradient-hero hover:opacity-90">
-                  <Send className="mr-2 h-4 w-4" />
-                  Send Message
-                </Button>
+                <form onSubmit={handleContactSubmit} className="space-y-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="subject">Subject</Label>
+                    <Input id="subject" placeholder="Describe your issue briefly" required />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="message">Message</Label>
+                    <Textarea
+                      id="message"
+                      placeholder="Please provide details about your question or issue..."
+                      className="min-h-[100px]"
+                      required
+                    />
+                  </div>
+                  <Button type="submit" className="w-full bg-gradient-hero hover:opacity-90" disabled={isSubmitting}>
+                    <Send className="mr-2 h-4 w-4" />
+                    {isSubmitting ? "Sending..." : "Send Message"}
+                  </Button>
+                </form>
                 <p className="text-xs text-muted-foreground text-center">
                   We typically respond within 24 hours
                 </p>
